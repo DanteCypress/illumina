@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { loadGames } from "../actions/gameActions";
+import { loadGames } from "../actions/gameAction";
 import { Game } from "../components/Game";
 import styled from "styled-components";
 import { motion } from "framer-motion";

@@ -1,13 +1,25 @@
 import React from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import { useDispatch } from "react-redux";
+import { loadDetail } from "../actions/detailAction";
 
 export const Game = ({ name, released, id, image }) => {
+  const dispatch = useDispatch();
+  const loadDetailHandler = () => {
+    dispatch(loadDetail(id));
+  };
   return (
-    <StyledGame>
+    <StyledGame onClick={loadDetailHandler}>
       <h3>{name}</h3>
       <p>{released}</p>
-      <img src={image} alt={name} />
+      <img
+        src={
+          image ||
+          "https://fwtx.com/downloads/22719/download/coming-soon.png?cb=ef8dbfa3204e40cc01f6514a1781bb25"
+        }
+        alt={name}
+      />
     </StyledGame>
   );
 };
