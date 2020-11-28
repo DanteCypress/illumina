@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useDispatch } from "react-redux";
 import { loadDetail } from "../actions/detailAction";
 import { Link } from "react-router-dom";
+import { getSmallImage } from "../util";
 
 export const Game = ({ name, released, id, image }) => {
   const dispatch = useDispatch();
@@ -18,7 +19,7 @@ export const Game = ({ name, released, id, image }) => {
         <p>{released}</p>
         <img
           src={
-            image ||
+            getSmallImage(image, 640) ||
             "https://fwtx.com/downloads/22719/download/coming-soon.png?cb=ef8dbfa3204e40cc01f6514a1781bb25"
           }
           alt={name}
