@@ -25,7 +25,7 @@ const GameDetail = ({ pathId }) => {
 
   const getPlatform = (platform) => {
     switch (platform) {
-      case "Playstation 4":
+      case "PlayStation 4":
         return playstation;
       case "Xbox One":
         return xbox;
@@ -35,6 +35,10 @@ const GameDetail = ({ pathId }) => {
         return nintendo;
       case "IOS":
         return apple;
+      case "PlayStation 5":
+        return playstation;
+      case "Xbox Series S/X":
+        return xbox;
       default:
         return gamepad;
     }
