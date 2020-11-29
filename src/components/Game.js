@@ -7,17 +7,19 @@ import { Link } from "react-router-dom";
 import { getSmallImage } from "../util";
 
 export const Game = ({ name, released, id, image }) => {
+  const stringPathId = id.toString();
   const dispatch = useDispatch();
   const loadDetailHandler = () => {
     document.body.style.overflow = "hidden";
     dispatch(loadDetail(id));
   };
   return (
-    <StyledGame onClick={loadDetailHandler}>
+    <StyledGame onClick={loadDetailHandler} layoutId={stringPathId}>
       <Link to={`/game/${id}`}>
-        <h3>{name}</h3>
+        <motion.h3 layout={`title${stringPathId}`}>{name}</motion.h3>
         <p>{released}</p>
-        <img
+        <motion.img
+          layout={`image${stringPathId}`}
           src={
             getSmallImage(image, 640) ||
             "https://fwtx.com/downloads/22719/download/coming-soon.png?cb=ef8dbfa3204e40cc01f6514a1781bb25"

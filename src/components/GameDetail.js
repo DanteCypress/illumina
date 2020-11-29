@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { getSmallImage } from "../util";
 
-const GameDetail = () => {
+const GameDetail = ({ pathId }) => {
   const history = useHistory();
   const exitDetailHandler = (e) => {
     const element = e.target;
@@ -19,10 +19,10 @@ const GameDetail = () => {
     <>
       {!isLoading && (
         <CardShadow className="shadow" onClick={exitDetailHandler}>
-          <Detail>
+          <Detail layoutId={pathId}>
             <Stats>
               <div className="rating">
-                <h3>{game.name}</h3>
+                <motion.h3 layout={`title ${pathId}`}>{game.name}</motion.h3>
                 <p>Rating: {game.rating}</p>
               </div>
               <Info>
@@ -39,14 +39,21 @@ const GameDetail = () => {
             </Description>
             <Media>
               <img
-                src={getSmallImage(game.background_image, 1280)}
+                src={
+                  getSmallImage(game.background_image, 1280) ||
+                  "https://house.utah.gov/wp-content/uploads/2019/01/Image-Coming-Soon.jpg"
+                }
                 alt={game.name}
               />
             </Media>
             <div className="gallery">
               {screen.results.map((screen) => (
-                <img
-                  src={getSmallImage(screen.image, 1280)}
+                <motion.img
+                  layout={`image${pathId}`}
+                  src={
+                    getSmallImage(screen.image, 1280) ||
+                    "https://house.utah.gov/wp-content/uploads/2019/01/Image-Coming-Soon.jpg"
+                  }
                   key={screen.id}
                   alt={game.name}
                 />
