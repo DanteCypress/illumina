@@ -1,4 +1,5 @@
 //BASE URL
+
 const base_url = "https://api.rawg.io/api/";
 
 //Get Current Month
